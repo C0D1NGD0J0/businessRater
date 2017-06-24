@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css?family=Dosis:400,700|Raleway:300,400,700');
+
+/*===============
+GENERAL
+===============*/
+html{
+	height: 100%;
+}
+
+body{
+	height: 100%;
+	font-size: 14px;
+	font-weight: 400; 
+	color: #191919;
+	line-height: 27px;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	letter-spacing: 0.5px;
+	text-rendering: optimizeLegibility;
+	font-family: 'Raleway', sans-serif;
+}
+
+p{
+	margin-top: 0px;
+	font-weight: 400;
+	margin-bottom: 20px;
+}
+
+.btn{
+	border-radius: 0;
+	padding: 5px 15px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+
+/*================
+HEADER SECTION
+=================*/
+header{
+	background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../img/bg-img1.jpg') center center no-repeat fixed;
+	background-size: cover;
+	height: 100%;
+	color: #fff;
+	text-align: center;
+	display: flex;
+	align-items: center;
+}
+
+#login-form{
+	color: #000;
+	font-size: 120%;
+}
+
+.login-form input[type="email"],
+.login-form input[type="password"]{
+	height: 40px;
+	margin: 0;
+	padding: 0 20px;
+	vertical-align: middle;
+	font-size: 14px;
+	font-weight: 100;
+	line-height: 50px;
+	color: #000;
+	border-radius: 0px;
+	outline: none;
+}
+
+.header{
+	width: 80%;
+	margin: 0 auto;
+	margin-top: 25px;
+	padding-top: 25px;
+}
+
+.header .intro-text{
+	font-size: 110%;
+	text-transform: uppercase;
+}
+
+.header h1{
+	font-size: 350%;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+
+.header a.fa{
+	color: #fff;
+	text-decoration: none;
+	margin-top: 1.5em;
+}
+
+.header a.fa:hover{
+	color: #cb949b;
+	transition: all 0.2s ease-in;
+}
+
+
+/*=================
+LOGIN PAGE
+=================*/
+section#login-section{
+	padding: 50px 20px;
+}
+
+.login_icon{
+	text-align: center;
+	padding-top: 15%;
+}
+
+.login_icon i.fa{
+	font-size: 25rem;
+}
+
+
+
+.media-object{
+	width: 80px;
+}
+
+
+
+footer{
+	background-color: #ddd;
+	/*position: absolute;*/
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	color: #000;
+	text-align: center;
+	height: 50px;
+	clear: both;
+	margin-top: 25px;
+}
+
+footer p{
+	margin: 0;
+	padding: 10px 5px;
+	text-transform: uppercase;
+}

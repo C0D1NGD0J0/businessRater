@@ -1,0 +1,27 @@
+{
+  "name": "rateme-app",
+  "version": "1.0.0",
+  "description": "Business raing application",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nodejs",
+    "expressjs",
+    "mongodb",
+    "rating-app"
+  ],
+  "author": "C0D1NGD0J0",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.5.6",
+    "express": "4.15.3",
+    "express-ejs-layouts": "^2.3.0",
+    "express-session": "^1.15.3",
+    "mongoose": "^4.10.8",
+    "morgan": "^1.8.2"
+  }
+}
