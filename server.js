@@ -31,6 +31,9 @@ app.use(ejslayout);
 app.set('views', __dirname + '/views');
 app.use(express.static(__dirname + '/public'));
 
+// ROUTES
+app.use('/', require('./app/routes/index'));
+
 // SERVER
 app.listen(port, () => {
 	console.log(`Listening on port ${port}`);
