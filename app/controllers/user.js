@@ -9,7 +9,7 @@ let user = {
 		res.render('pages/signup', {title: "Signup || RateMe"});
 	},
 
-	pwdreset: (req, res, next) => {
+	pwdforgot: (req, res, next) => {
 		res.render('pages/password-forgot', {title: "Forgot Password || RateMe"});
 	}
 }

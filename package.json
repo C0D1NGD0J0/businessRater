@@ -17,6 +17,7 @@
   "author": "C0D1NGD0J0",
   "license": "ISC",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.2",
     "connect-flash": "^0.1.1",
     "connect-mongo": "^1.3.2",

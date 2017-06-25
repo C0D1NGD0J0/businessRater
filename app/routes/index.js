@@ -7,6 +7,6 @@ const user = require('../controllers/user');
 router.get('/', home.index);
 router.get('/login', user.login);
 router.get('/signup', user.signup);
-router.get('/pwdreset', user.pwdreset);
+router.get('/pwdforgot', user.pwdforgot);
 
 module.exports = router;

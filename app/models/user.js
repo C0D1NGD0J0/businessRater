@@ -18,8 +18,10 @@ let UserSchema = new Schema({
 		default: ''
 	},
 	company:{
-		name: type: String,
-		default: '',
+		name: {
+			type: String,
+			default: ''
+		},
 		image: {type: String, default: ''}
 	},
 	passwordResetToken: {type: String, dafault: ''},

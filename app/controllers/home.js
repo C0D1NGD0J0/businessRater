@@ -2,7 +2,7 @@
 
 let home = {
 	index: (req, res, next) => {
-		res.render('pages/index');
+		res.render('pages/index', {title: "Home || RateMe"});
 	}
 }
 
