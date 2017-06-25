@@ -1,7 +1,8 @@
 'use strict';
-
+const
 const mongoose = require('mongoose'),
-			Schema = mongoose.Schema;
+			Schema = mongoose.Schema,
+			bcrypt = require('bcrypt-nodejs');
 
 let UserSchema = new Schema({
 	fullname:{
@@ -27,5 +28,9 @@ let UserSchema = new Schema({
 	passwordResetToken: {type: String, dafault: ''},
 	passwordResetExpired: {type: Date, default: Date.now}
 });
+
+UserSchema.methods.encryptPwd = (pwd) => {
+	return bcrypt.hashSync(pwd, bcrypt.genSaltSync(10), null);
+}
 
 mongoose.model('User', UserSchema);
