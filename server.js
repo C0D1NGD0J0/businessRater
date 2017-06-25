@@ -19,8 +19,6 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
 
-require('./app/config/passport');
-
 // SESSION MIDDLEWARE
 app.use(session({
 	secret: config.secret,
@@ -35,12 +33,14 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
-
 // TEMPLATE ENGINE
 app.set('view engine', 'ejs');
 app.use(ejslayout);
 app.set('views', __dirname + '/views');
 app.use(express.static(__dirname + '/public'));
+
+// MODELS
+require('./app/models/user');
 
 // ROUTES
 app.use('/', require('./app/routes/index'));

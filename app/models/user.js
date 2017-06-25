@@ -1,5 +1,4 @@
 'use strict';
-const
 const mongoose = require('mongoose'),
 			Schema = mongoose.Schema,
 			bcrypt = require('bcrypt-nodejs');
@@ -29,7 +28,7 @@ let UserSchema = new Schema({
 	passwordResetExpired: {type: Date, default: Date.now}
 });
 
-UserSchema.methods.encryptPwd = (pwd) => {
+UserSchema.methods.encryptPwd = function(pwd){
 	return bcrypt.hashSync(pwd, bcrypt.genSaltSync(10), null);
 }
 

@@ -1,4 +1,6 @@
 'use strict';
+const passport = require('passport');
+const passportConfig = require('../config/passport');
 
 let user = {
 	login: (req, res, next) => {
@@ -8,6 +10,12 @@ let user = {
 	signup: (req, res, next) => {
 		res.render('pages/signup', {title: "Signup || RateMe"});
 	},
+
+	create: passport.authenticate('local-signup', {
+		successRedirect: '/',
+		failureRedirect: '/signup',
+		failureFlash: true
+	}),
 
 	pwdforgot: (req, res, next) => {
 		res.render('pages/password-forgot', {title: "Forgot Password || RateMe"});

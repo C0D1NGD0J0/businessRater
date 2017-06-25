@@ -1,8 +1,8 @@
 'use strict';
-
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const User = require('../models/user');
+const mongoose = require('mongoose');
+const User = mongoose.model('User');
 
 // Stores user id in session
 passport.serializeUser((user, done) => {
@@ -16,22 +16,22 @@ passport.deserializeUser((id, done) => {
 	});
 });
 
-passport.use('local.signup', new LocalStrategy({
+passport.use('local-signup', new LocalStrategy({
 	usernameField: 'email',
 	passwordField: 'password',
 	passReqToCallback: true
-},(req, email, password, done) =>{
-	User.findOne({email}, (err, user) =>{
+},(req, email, pwd, done) =>{
+	User.findOne({email: email}, (err, user) =>{
 		if(err) return done(err);
 		if(user) return done(null, false);
 		
 		let newuser = new User();
 		newuser.fullname = req.body.fullname;
 		newuser.email = req.body.email;
-		newuser.password = encryptPwd(req.body.password);
+		newuser.password = newuser.encryptPwd(req.body.password);
 
 		newuser.save((err) => {
-			return done(null newuser);
+			return done(null, newuser);
 		});
 	})
 }));

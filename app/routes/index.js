@@ -8,5 +8,6 @@ router.get('/', home.index);
 router.get('/login', user.login);
 router.get('/signup', user.signup);
 router.get('/pwdforgot', user.pwdforgot);
+router.post('/signup', user.create);
 
 module.exports = router;
