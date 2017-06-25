@@ -52,8 +52,12 @@ header{
 	font-size: 120%;
 }
 
-.login-form input[type="email"],
-.login-form input[type="password"]{
+#login-form input[type="email"],
+#login-form input[type="password"],
+#signupForm input[type="email"],
+#signupForm input[type="text"],
+#signupForm input[type="password"],
+#pwdforgotForm input[type="email"]{
 	height: 40px;
 	margin: 0;
 	padding: 0 20px;
@@ -100,7 +104,8 @@ header{
 /*=================
 LOGIN PAGE
 =================*/
-section#login-section{
+section#login-section,
+section#pwdforgotForm{
 	padding: 50px 20px;
 }
 
@@ -117,6 +122,17 @@ section#login-section{
 
 .media-object{
 	width: 80px;
+}
+
+
+.pwdforgotForm{
+	padding-top: 60px;
+}
+
+.pwdforgotForm label{
+	font-size: 120%;
+	padding-bottom: 7px;
+	text-transform: uppercase;
 }
 
 

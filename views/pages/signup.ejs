@@ -10,7 +10,7 @@
 			<div class="col-md-7">
 				<h1 class="page-header">Register</h1>
 				<div id="login-form">
-					<form action="" method="post" accept-charset="utf-8">
+					<form action="/signup" method="post" accept-charset="utf-8" id="signupForm">
 						<div class="form-group">
 					    <label for="email">Email address</label>
 					    <input type="email" class="form-control" name="email">
@@ -27,7 +27,10 @@
 					  </div>
 
 					  <button type="submit" class="btn btn-primary">Submit</button>
-					</form>
+					</form><br>
+					<div>
+            <h4>Already have an account? <a href="/login">Login</a></h4>
+          </div>
 				</div>
 			</div><!--/col-->
 
