@@ -32,4 +32,8 @@ UserSchema.methods.encryptPwd = function(pwd){
 	return bcrypt.hashSync(pwd, bcrypt.genSaltSync(10), null);
 }
 
+UserSchema.methods.validatePwd = function(pwd){
+	return bcrypt.compareSync(pwd, this.password);
+}
+
 mongoose.model('User', UserSchema);

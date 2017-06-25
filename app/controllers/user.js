@@ -4,7 +4,8 @@ const passportConfig = require('../config/passport');
 
 let user = {
 	login: (req, res, next) => {
-		res.render('pages/login', {title: "Login || RateMe"});
+		let errors = req.flash('error')
+		res.render('pages/login', {title: "Login || RateMe", errors});
 	},
 
 	signup: (req, res, next) => {
@@ -13,8 +14,14 @@ let user = {
 	},
 
 	create: passport.authenticate('local-signup', {
-		successRedirect: '/',
+		successRedirect: '/dashboard',
 		failureRedirect: '/signup',
+		failureFlash: true
+	}),
+
+	log_In: passport.authenticate('local-login', {
+		successRedirect: '/dashboard',
+		failureRedirect: '/login',
 		failureFlash: true
 	}),
 

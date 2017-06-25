@@ -20,7 +20,7 @@ passport.use('local-signup', new LocalStrategy({
 	usernameField: 'email',
 	passwordField: 'password',
 	passReqToCallback: true
-},(req, email, pwd, done) =>{
+	},(req, email, pwd, done) =>{
 	User.findOne({email: email}, (err, user) =>{
 		if(err) return done(err);
 		if(user) return done(null, false, req.flash('error', 'User email already exists!.'));
@@ -34,6 +34,23 @@ passport.use('local-signup', new LocalStrategy({
 			return done(null, newuser);
 		});
 	})
+}));
+
+passport.use('local-login', new LocalStrategy({
+	usernameField: 'email',
+	passwordField: 'password',
+	passReqToCallback: true
+	},(req, email, pwd, done) => {
+	User.findOne({email}, (err, user) =>{
+		if(err) return done(err);
+		let messages = [];
+		
+		if(!user || !user.validatePwd(pwd)){
+			messages.push('Invalid email/password combination.')
+			return done(null, false, req.flash('error', messages))
+		};
+		return done(null, user);
+	});
 }));
 
 
