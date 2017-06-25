@@ -23,7 +23,7 @@ passport.use('local-signup', new LocalStrategy({
 },(req, email, pwd, done) =>{
 	User.findOne({email: email}, (err, user) =>{
 		if(err) return done(err);
-		if(user) return done(null, false);
+		if(user) return done(null, false, req.flash('error', 'User email already exists!.'));
 		
 		let newuser = new User();
 		newuser.fullname = req.body.fullname;

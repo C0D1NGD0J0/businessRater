@@ -8,7 +8,8 @@ let user = {
 	},
 
 	signup: (req, res, next) => {
-		res.render('pages/signup', {title: "Signup || RateMe"});
+		let errors = req.flash('error')
+		res.render('pages/signup', {title: "Signup || RateMe", errors});
 	},
 
 	create: passport.authenticate('local-signup', {

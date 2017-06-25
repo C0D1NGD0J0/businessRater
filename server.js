@@ -11,6 +11,7 @@ const express = require('express'),
 			MongoStore = require('connect-mongo')(session),
 			passport = require('passport'),
 			flash = require('connect-flash'),
+			validator = require('express-validator'),
 			port = (process.env.PORT || 3000),
 			app = express();
 
@@ -18,6 +19,7 @@ const express = require('express'),
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
+app.use(validator());
 
 // SESSION MIDDLEWARE
 app.use(session({
