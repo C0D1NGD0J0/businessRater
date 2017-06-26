@@ -35,6 +35,8 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
+require('./app/config/mailer');
+
 // TEMPLATE ENGINE
 app.set('view engine', 'ejs');
 app.use(ejslayout);

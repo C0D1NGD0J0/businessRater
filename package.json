@@ -17,6 +17,7 @@
   "author": "C0D1NGD0J0",
   "license": "ISC",
   "dependencies": {
+    "async": "^2.5.0",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.2",
     "connect-flash": "^0.1.1",
@@ -29,6 +30,7 @@
     "express-validator": "^3.2.0",
     "mongoose": "^4.10.8",
     "morgan": "^1.8.2",
+    "nodemailer": "^4.0.1",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0"
   }
