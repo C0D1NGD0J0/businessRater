@@ -54,7 +54,7 @@ let user = {
 					}
 
 					user.passwordResetToken = token;
-					user.passwordResetExpired = Date.now() + (60*60*2000) //token expires in 1hr in milliseconds
+					user.passwordResetExpired = Date.now() + 60*60*1000; //token expires in 1hr in milliseconds
 					user.save((err) =>{
 						cb(err, token, user);
 					})
@@ -74,7 +74,7 @@ let user = {
 					to: user.email,
 					from: `RateMe <${mailerSecret.auth.user}>`,
 					subject: 'RateMe-App Password Reset Token',
-					text: "You requested for password reset.\nPlease click on the link to completed the process: \n\n" + "http://localhost/reset/" + token
+					text: "You requested for password reset.\nPlease click on the link to completed the process: \n\n" + "http://localhost:3000/reset/" + token
 				}
 
 				smtpTransport.sendMail(mailOptions, (err, response) => {
@@ -87,6 +87,17 @@ let user = {
 			if(err) return next(err);
 			res.redirect('/forgot')
 		});
+	},
+
+	reset: (req, res, next) => {
+		User.findOne({passwordResetToken: req.params.token, passwordResetExpired: {$gt: Date.now()}}, (err, user) => {
+			if(!user){
+				req.flash('error', 'Password reset token is invalid/expired.');
+				return res.redirect("/forgot");
+			}
+			let errors = req.flash('error')
+			res.render('pages/reset', {title: "Password Reset || RateMe", errors})
+		})
 	}
 }
 
