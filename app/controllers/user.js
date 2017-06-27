@@ -15,6 +15,11 @@ let user = {
 		res.render('pages/login', {title: "Login || RateMe", errors});
 	},
 
+	logout: (req, res, next) =>{
+		req.logout();
+		res.redirect('/');
+	},
+
 	signup: (req, res, next) => {
 		let errors = req.flash('error');
 		res.render('pages/signup', {title: "Signup || RateMe", errors});
@@ -124,7 +129,7 @@ let user = {
 							let errors = req.flash('error');
 							res.redirect('/reset/'+req.params.token);
 						} else {
-							user.password = req.body.password;
+							user.password = user.encryptPwd(req.body.password);
 							user.passwordResetToken = undefined;
 							user.passwordResetExpired = undefined;
 							user.save((err) => {

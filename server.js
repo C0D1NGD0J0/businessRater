@@ -34,6 +34,10 @@ app.use(flash());
 // PASSPORT MIDDLEWARE
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(function(req, res, next){ //able to access logged-in user on every request
+	res.locals.user = req.user;
+	next();
+});
 
 require('./app/config/mailer');
 
