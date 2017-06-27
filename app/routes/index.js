@@ -6,7 +6,7 @@ const user = require('../controllers/user');
 const h = require('../config/helper');
 
 router.get('/', home.index);
-router.get('/dashboard', home.dashboard);
+// router.get('/dashboard', home.dashboard);
 router.get('/login', user.login);
 router.get('/signup', user.signup);
 router.get('/forgot', user.forgot);

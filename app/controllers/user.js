@@ -26,13 +26,12 @@ let user = {
 	},
 
 	create: passport.authenticate('local-signup', {
-		successRedirect: '/dashboard',
+		successRedirect: '/',
 		failureRedirect: '/signup',
 		failureFlash: true
 	}),
 
 	log_In: passport.authenticate('local-login', {
-		// successRedirect: '/dashboard',
 		failureRedirect: '/login',
 		failureFlash: true
 	}),
