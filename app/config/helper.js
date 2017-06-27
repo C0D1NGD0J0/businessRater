@@ -41,5 +41,11 @@ module.exports = {
 		} else {
 			return next();
 		}
+	},
+
+	validatePassword: (req, res, next) => {
+		req.checkBody('password', 'Password is required').notEmpty();
+		req.checkBody('password', 'Password must be greater than 5 characters').isLength({min: 5});
+		req.check('password', 'Password must contain at least 1 number.').matches(/^(?=.*\d)(?=.*[a-z])[0-9a-z]{5,}$/, 'i');
 	}
 }

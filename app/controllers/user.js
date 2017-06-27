@@ -1,6 +1,7 @@
 'use strict';
 const passport = require('passport');
 const passportConfig = require('../config/passport');
+const h = require('../config/helper');
 const async = require('async');
 const nodemailer = require('nodemailer');
 const crypto = require('crypto');
@@ -95,9 +96,73 @@ let user = {
 				req.flash('error', 'Password reset token is invalid/expired.');
 				return res.redirect("/forgot");
 			}
-			let errors = req.flash('error')
-			res.render('pages/reset', {title: "Password Reset || RateMe", errors})
-		})
+			let errors = req.flash('error');
+			let success = req.flash('success');
+			res.render('pages/reset', {title: "Password Reset || RateMe", errors, success})
+		});
+	},
+
+	pwdreset: (req, res, next) => {
+		async.waterfall([
+			function(cb){
+				User.findOne({passwordResetToken: req.params.token, passwordResetExpired: {$gt: Date.now()}}, (err, user) => {
+					if(!user){
+						req.flash('error', 'Password reset token is invalid/expired.');
+						return res.redirect("/forgot");
+					}
+
+					h.validatePassword;
+					let vErrors = req.validationErrors();
+
+					if(req.body.password === req.body.cpassword){
+						if(vErrors){
+							let errs = [];
+							vErrors.forEach(function(e) {
+								errs.push(e.msg);
+							});
+
+							let errors = req.flash('error');
+							res.redirect('/reset/'+req.params.token);
+						} else {
+							user.password = req.body.password;
+							user.passwordResetToken = undefined;
+							user.passwordResetExpired = undefined;
+							user.save((err) => {
+								req.flash('success', 'Your password has been successfully updated.');
+								cb(err, user);
+							});
+						}
+					} else {
+						req.flash('error', "Passwords don't match!");
+						res.redirect('/reset/'+req.params.token);
+					}
+				})
+			},
+
+			function(user, cb){
+				let smtpTransport = nodemailer.createTransport({
+					service: 'Gmail',
+					auth: {
+						user: mailerSecret.auth.user,
+						pass: mailerSecret.auth.pwd
+					}
+				});
+
+				let mailOptions = {
+					to: user.email,
+					from: `RateMe <${mailerSecret.auth.user}>`,
+					subject: 'RateMe-App Password Has Been Updated',
+					text: "You are receiving this email confirming you just updated your password."
+				}
+
+				smtpTransport.sendMail(mailOptions, (err, response) => {
+					cb(err, user);
+					let errors = req.flash('error');
+					let success = req.flash('success');
+					res.render('pages/reset', {title: "Password Reset || RateMe", errors, success})
+				});
+			}//end
+		])
 	}
 }
 
