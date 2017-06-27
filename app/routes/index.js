@@ -14,7 +14,7 @@ router.get('/reset/:token', user.reset);
 router.get('/logout', user.logout);
 
 router.post('/signup', h.validateSignup, user.create);
-router.post('/login', h.validateLogin, user.log_In);
+router.post('/login', h.validateLogin, user.log_In, h.rememberme);
 router.post('/pwdforgot', user.pwdforgot)
 router.post('/reset/:token', user.pwdreset);
 

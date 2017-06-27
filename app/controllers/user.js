@@ -32,7 +32,7 @@ let user = {
 	}),
 
 	log_In: passport.authenticate('local-login', {
-		successRedirect: '/dashboard',
+		// successRedirect: '/dashboard',
 		failureRedirect: '/login',
 		failureFlash: true
 	}),
