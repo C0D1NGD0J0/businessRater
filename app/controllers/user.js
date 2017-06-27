@@ -17,7 +17,9 @@ let user = {
 
 	logout: (req, res, next) =>{
 		req.logout();
-		res.redirect('/');
+		req.session.destroy((e) => {
+			res.redirect('/');
+		})
 	},
 
 	signup: (req, res, next) => {
