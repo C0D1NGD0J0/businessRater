@@ -7,7 +7,7 @@ const nodemailer = require('nodemailer');
 const crypto = require('crypto');
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
-const mailerSecret = require('../config/mailer');
+const secret = require('../config/secret');
 
 let user = {
 	login: (req, res, next) => {
@@ -72,14 +72,14 @@ let user = {
 				let smtpTransport = nodemailer.createTransport({
 					service: 'Gmail',
 					auth: {
-						user: mailerSecret.auth.user,
-						pass: mailerSecret.auth.pwd
+						user: secret.auth.user,
+						pass: secret.auth.pwd
 					}
 				});
 
 				let mailOptions = {
 					to: user.email,
-					from: `RateMe <${mailerSecret.auth.user}>`,
+					from: `RateMe <${secret.auth.user}>`,
 					subject: 'RateMe-App Password Reset Token',
 					text: "You requested for password reset.\nPlease click on the link to completed the process: \n\n" + "http://localhost:3000/reset/" + token
 				}

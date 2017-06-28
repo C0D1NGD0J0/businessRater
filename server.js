@@ -39,7 +39,7 @@ app.use(function(req, res, next){ //able to access logged-in user on every reque
 	next();
 });
 
-require('./app/config/mailer');
+require('./app/config/secret');
 
 // TEMPLATE ENGINE
 app.set('view engine', 'ejs');

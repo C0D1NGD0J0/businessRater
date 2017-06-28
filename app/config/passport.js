@@ -3,6 +3,8 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
+const FacebookStrategy = require('passport-facebook').Strategy;
+const secret = require('../config/secret');
 
 // Stores user id in session
 passport.serializeUser((user, done) => {
@@ -53,17 +55,22 @@ passport.use('local-login', new LocalStrategy({
 	});
 }));
 
+passport.use(new FacebookStrategy(secret.facebook, (req, token, refreshToken, profile, done) => {
+	User.findOne({facebook: profile.id}, (err, user) => {
+		if(err) return done(err);
+		
+		if(user) {
+			return done(null, user);
+		} else {
+			let newuser = new User();
+			newuser.facebook = profile.id;
+			newuser.fullname = profile.displayName;
+			newuser.email = profile._json.email;
+			newuser.tokens.push({token});
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+			newuser.save((err) => {
+				return done(null, newuser);
+			});
+		}
+	})
+}));

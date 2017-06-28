@@ -17,6 +17,11 @@ let UserSchema = new Schema({
 		type: String,
 		default: ''
 	},
+	facebook: {
+		type: String,
+		default: ''
+	},
+	tokens: [],
 	company:{
 		name: {
 			type: String,
