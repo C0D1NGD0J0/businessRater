@@ -40,7 +40,7 @@ HEADER SECTION
 header{
 	background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../img/bg-img1.jpg') center center no-repeat fixed;
 	background-size: cover;
-	height: 100%;
+	height: 100vh;
 	color: #fff;
 	text-align: center;
 	display: flex;
@@ -135,11 +135,28 @@ section#pwdforgotForm{
 	text-transform: uppercase;
 }
 
+.user_detail{
+	margin-bottom: 30px;
+}
+
+.profile_img{
+	margin: 0 auto;
+}
+
+.menu-tile{
+	padding: 10px;
+	text-align: center;
+}
+
+.menu-tile .fa{
+	color: #dd6566;
+	font-size: 250%;
+}
 
 
 footer{
 	background-color: #ddd;
-	/*position: absolute;*/
+	position: relative;
 	bottom: 0;
 	left: 0;
 	width: 100%;
@@ -147,7 +164,8 @@ footer{
 	text-align: center;
 	height: 50px;
 	clear: both;
-	margin-top: 25px;
+	z-index: 10;
+	margin-top: 3em;
 }
 
 footer p{
