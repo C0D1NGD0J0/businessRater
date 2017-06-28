@@ -56,14 +56,15 @@ passport.use('local-login', new LocalStrategy({
 }));
 
 passport.use(new FacebookStrategy(secret.facebook, (req, token, refreshToken, profile, done) => {
-	User.findOne({facebook: profile.id}, (err, user) => {
+	User.findOne({fbID: profile.id}, (err, user) => {
 		if(err) return done(err);
 		
 		if(user) {
 			return done(null, user);
 		} else {
+
 			let newuser = new User();
-			newuser.facebook = profile.id;
+			newuser.fbID = profile.id;
 			newuser.fullname = profile.displayName;
 			newuser.email = profile._json.email;
 			newuser.tokens.push({token});

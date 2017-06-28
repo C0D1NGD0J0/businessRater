@@ -17,7 +17,7 @@ let UserSchema = new Schema({
 		type: String,
 		default: ''
 	},
-	facebook: {
+	fbID: {
 		type: String,
 		default: ''
 	},
