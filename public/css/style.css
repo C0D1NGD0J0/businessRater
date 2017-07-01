@@ -154,6 +154,18 @@ section#pwdforgotForm{
 }
 
 
+
+
+
+
+#companySignup-section .login_icon{
+	padding-top: 50%;
+	color: #ff4400;
+}
+
+
+
+
 footer{
 	background-color: #ddd;
 	position: relative;

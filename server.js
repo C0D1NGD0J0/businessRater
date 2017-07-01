@@ -52,6 +52,7 @@ require('./app/models/user');
 
 // ROUTES
 app.use('/', require('./app/routes/index'));
+app.use('/company', require('./app/routes/company'));
 
 // SERVER
 app.listen(port, () => {
