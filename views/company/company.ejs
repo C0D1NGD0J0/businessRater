@@ -1,0 +1,80 @@
+<section id="companySignup-section">
+	<div class="container">
+    <%# include ../flash/errors %>
+
+		<div class="row well">
+			<div class="col-md-7">
+				<h1 class="page-header">Register Company</h1>
+
+				<div id="companyForm">
+					<form action="/company/new" method="post" accept-charset="utf-8">
+						
+					  <div class="form-group">
+					    <label for="">Company Name</label>
+					    <input type="text" class="form-control" name="company_name" placeholder="Company name">
+					  </div>
+
+					  <div class="form-group">
+					    <label for="">Address</label>
+					    <input type="text" class="form-control" name="address" placeholder="Company address">
+					  </div>
+
+					  <div class="form-group">
+					    <label for="">City</label>
+					    <input type="text" class="form-control" name="city" placeholder="City">
+					  </div>
+
+					  <div class="form-group">
+					    <label for="">Country</label>
+					    <input type="text" class="form-control" name="country" placeholder="Country">
+					  </div>
+
+					  <div class="form-group">
+					    <label for="">Sector</label>
+					    <input type="text" class="form-control" name="sector" placeholder="Business Sector">
+					  </div>
+						
+						<div class="form-group">
+					    <label for="">Website</label>
+					    <input type="url" class="form-control" name="ewbsite" placeholder="Website URL">
+					  </div>
+					  
+					  <div class="form-group">
+					    <label for="">Company Image</label><br>
+					    <button type="button" data-toggle="modal" data-target=#file>Add File</button><br>
+					    <span id="uploadStatus"></span>
+
+					    <div id="file" class="modal" tabindex="-1" role= "dialog">
+					    	<div class="modal-dialog">
+					    		<div class="modal-content">
+					    			<div class="modal-header">
+					    				<button type="button" id="close" class="close" data-dismiss="modal">&times;</button>
+					    			</div><!--/modal-header-->
+
+					    			<div class="modal-body">
+					    				<div class="row">
+					    					<div class="progress">
+					    						<div class="progress-bar" role="progressbar"></div>
+					    					</div>
+					    					<button type="button" class="btn btn-info uploadBtn">Upload File</button>
+					    					<input type="file" name="fileUploadInput" id="uploadInput" class="form-control" style="display:none">
+					    				</div>
+					    			</div><!--/modalBody-->
+					    		</div><!--/modalContent-->
+					    	</div>	<!--/modal-dialog-->				    	
+					    </div><!--/modal-->
+					  </div>
+
+					  <input type="submit" id="register" name="register" value="Register" class="btn btn-primary">
+					</form>
+				</div><!--/login-form-->
+			</div><!--/col-->
+
+			<div class="col-md-5">
+				<div class="login_icon">
+					<i class="fa fa-building-o"></i>
+				</div>
+			</div><!--/col-->
+		</div><!--/row-->
+	</div><!--/container-->
+</section>
