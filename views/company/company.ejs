@@ -41,7 +41,8 @@
 					  
 					  <div class="form-group">
 					    <label for="">Company Image</label><br>
-					    <button type="button" class="btn btn-info" data-toggle="modal" data-target=#file>Add File</button>
+					    <button type="button" data-toggle="modal" data-target=#file>Add File</button><br>
+					    <span id="uploadStatus"></span>
 
 					    <div id="file" class="modal" tabindex="-1" role= "dialog">
 					    	<div class="modal-dialog">
@@ -55,13 +56,13 @@
 					    					<div class="progress">
 					    						<div class="progress-bar" role="progressbar"></div>
 					    					</div>
-					    					<button type="button" class="btn btn-info">Upload File</button>
-					    					<input type="file" name="upload" id="uploadInput" class="form-control" style="display: none;">
+					    					<button type="button" class="btn btn-info uploadBtn">Upload File</button>
+					    					<input type="file" name="fileUploadInput" id="uploadInput" class="form-control" style="display:none">
 					    				</div>
-					    			</div>
-					    		</div>
-					    	</div>					    	
-					    </div>
+					    			</div><!--/modalBody-->
+					    		</div><!--/modalContent-->
+					    	</div>	<!--/modal-dialog-->				    	
+					    </div><!--/modal-->
 					  </div>
 
 					  <input type="submit" id="register" name="register" value="Register" class="btn btn-primary">
