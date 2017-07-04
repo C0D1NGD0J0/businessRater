@@ -153,6 +153,10 @@ section#pwdforgotForm{
 	font-size: 250%;
 }
 
+#companySignup-section .login_icon{
+	padding-top: 50%;
+	color: #ccc;
+}
 
 footer{
 	background-color: #ddd;
