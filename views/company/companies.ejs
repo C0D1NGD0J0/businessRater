@@ -1,0 +1,27 @@
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+			<h2 class="page-header text-center">Companies</h2>
+		</div><!--/col-->
+	</div><!--/row-->
+
+	<div class="row">
+		<% if(companies) {%>
+			<% companies.forEach((company) => { %>
+				<div class="col-sm-3">
+					<div class="well companyCard">
+						<div class="company-img">
+							<img src="http://via.placeholder.com/150x150" class="img-responsive img-square">
+						</div>
+						<div class="company-info">
+							<h3><%= company.name %></h3>
+							<span><i class="stars"></i>☆☆☆☆☆</span><br>
+							<i class="fa fa-building-o"><%=company.sector%></i><br>
+							<i class="fa fa-map-marker"><%= company.city %>, <%= company.country %></i>
+						</div>
+					</div>
+				</div>
+			<% }) %>
+		<%}%>
+	</div>
+</div>

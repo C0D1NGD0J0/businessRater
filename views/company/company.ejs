@@ -1,13 +1,13 @@
 <section id="companySignup-section">
 	<div class="container">
-    <%# include ../flash/errors %>
+    <% include ../flash/success %>
 
 		<div class="row well">
 			<div class="col-md-7">
 				<h1 class="page-header">Register Company</h1>
 
 				<div id="companyForm">
-					<form action="" method="" accept-charset="utf-8">
+					<form action="/company/create" method="post" accept-charset="utf-8">
 						
 					  <div class="form-group">
 					    <label for="">Company Name</label>
@@ -42,7 +42,7 @@
 						<div class="form-group">
 					    <label for="">Website</label>
 					    <span id="errMsg6"></span>
-					    <input type="url" id="website" class="form-control" name="ewbsite" placeholder="Website URL">
+					    <input type="url" id="website" class="form-control" name="website" placeholder="Website URL">
 					  </div>
 					  
 					  <div class="form-group">

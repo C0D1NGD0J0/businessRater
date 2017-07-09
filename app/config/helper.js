@@ -57,5 +57,13 @@ module.exports = {
 			req.session.cookie.expires = null;
 		}
 		res.redirect('/');
+	},
+
+	validateCompany: (req, res) => {
+		req.checkBody('company_name', 'Company name is required.').notEmpty();
+		req.checkBody('address', 'Company Address is required.').notEmpty();
+		req.checkBody('city', 'City name is required.').notEmpty();
+		req.checkBody('country', 'Country name is required.').notEmpty();
+		req.checkBody('website', 'Website url is required.').notEmpty();
 	}
 }

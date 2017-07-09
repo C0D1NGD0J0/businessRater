@@ -158,6 +158,17 @@ section#pwdforgotForm{
 	color: #ccc;
 }
 
+.companyCard .company-img{
+	margin: 0 auto;
+	height: 150px;
+	width: 150px;
+	display: block;
+}
+
+.company-img img{
+	width: 100%;
+}
+
 footer{
 	background-color: #ddd;
 	position: relative;

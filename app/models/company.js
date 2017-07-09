@@ -1,12 +1,15 @@
 'use strict';
 
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const mongoose = require('mongoose'),
+			uniqueValidator = require('mongoose-unique-validator'),
+			Schema = mongoose.Schema;
 
 let companySchema = new Schema({
 	name: {
 		type: String,
-		required: true
+		required: true,
+		index: true,
+		unique: true
 	},
 	address: {type: String},
 	city: {type: String},
@@ -32,4 +35,5 @@ let companySchema = new Schema({
 	ratingSum: {type: Number, default: 0}
 });
 
+companySchema.plugin(uniqueValidator);
 mongoose.model('Company', companySchema);

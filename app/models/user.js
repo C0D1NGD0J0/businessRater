@@ -1,16 +1,20 @@
 'use strict';
 const mongoose = require('mongoose'),
 			Schema = mongoose.Schema,
-			bcrypt = require('bcrypt-nodejs');
+			bcrypt = require('bcrypt-nodejs'),
+			uniqueValidator = require('mongoose-unique-validator');
 
 let UserSchema = new Schema({
 	fullname:{
 		type: String,
-		required: true
+		required: true,
+		unique: true
 	},
 	email:{
 		type: String,
-		required: true
+		required: true,
+		index: true,
+		unique: true
 	},
 	password: String,	
 	role: {
@@ -40,5 +44,7 @@ UserSchema.methods.encryptPwd = function(pwd){
 UserSchema.methods.validatePwd = function(pwd){
 	return bcrypt.compareSync(pwd, this.password);
 }
+
+UserSchema.plugin(uniqueValidator);
 
 mongoose.model('User', UserSchema);
